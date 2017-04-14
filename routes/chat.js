@@ -8,9 +8,9 @@ var Chat = require('../models/Chat.js');
 
 server.listen(4000);
 
-// router.get('/', function(req, res, next) {
-//   res.send('Express REST API');
-// });
+router.get('/', function(req, res, next) {
+  res.send('Express REST API');
+});
 
 // socket io
 io.on('connection', function (socket) {
