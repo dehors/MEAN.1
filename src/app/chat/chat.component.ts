@@ -26,11 +26,14 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 			this.joinned = true;
 			this.scrollToBottom();
 		}
+
 		this.socket.on('new-message', function (data) {
-			if(data.message.room === JSON.parse(localStorage.getItem("user")).room) {
-				this.chats.push(data.message);
-				this.msgData = { room: user.room, nickname: user.nickname, message: '' }
-				this.scrollToBottom();
+			if (data.message.room) {
+				if(data.message.room === JSON.parse(localStorage.getItem("user")).room) {
+					this.chats.push(data.message);
+					this.msgData = { room: user.room, nickname: user.nickname, message: '' }
+					this.scrollToBottom();
+				}
 			}
 		}.bind(this));
 	}
